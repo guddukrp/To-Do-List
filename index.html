@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        background-color: rgb(255, 0, 0);
+        background-size: cover;
+        }
+        .mycontent{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+        .container{
+            display: inline-block;
+            margin: 10px;
+            padding: 30px;
+            background-color: white;
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+
+        }
+        .coninput{
+            display: flex;
+            flex-direction: row;
+            background-color: white;
+
+        }
+        .input{
+            background-color: white;
+            border: 1px solid rgb(224, 17, 17);
+            border-radius: 5px;
+            padding: 5px;
+            margin: 0px 5px;
+        }
+        #btnclick{
+            background-color: white;
+            font-family: sans-serif;
+            padding: 5px;
+            border: 2px solid red;
+            border-radius: 5px;
+        }
+        #btnclick:hover{
+            background-color: rgb(255, 166, 0);
+        }
+        #error{
+            background-color: white;
+            border: none;
+            color: red;
+
+
+        }
+        ul{
+            padding :10px;
+            list-style: none;
+            background-color: white
+        }
+        li{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            background-color: white;
+            justify-content: space-between;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: 500px;
+        }
+        li a{
+            text-decoration: none;
+            background-color: white;
+            font-weight: bold;
+            color: red;
+        }
+
+    </style> 
+</head>
+<body>
+    <div class="mycontent">
+        <div class="container">
+            <ul id="box"></ul>
+            <div class="coninput">
+                <input type="text" name="name" id="name" class="input">
+                <input type="button" value="Add" id="btnclick" class="btn" onclick="addmore()">
+
+            </div>
+            <span id="error"></span>
+        </div>
+    </div>
+</body>
+<script>
+    function addmore(){
+        let name=document.getElementById("name").value;
+        if(name==""){
+            document.getElementById("error").innerHTML="please enter value";
+
+        }else{
+            let box=document.getElementById("box");
+            let li=document.createElement("li");
+
+            li.textContent= name;
+
+            let a=document.createElement('a');
+            a.textContent="x";
+            a.href="javascript:void(0)";
+            a.className="remove";
+            li.appendChild(a);
+
+            let pos=box.firstElementChild;
+            if(pos==null){
+                box.appendChild(li);
+            }else{
+                box.insertBefore(li,pos);
+            }
+            document.getElementById("name").value="";
+
+        }
+        let btn=document.querySelector("ul");
+        btn.addEventListener("click",function(e){
+            let li= e.target.parentNode;
+            box.removeChild(li);
+        });
+    }
+</script>
+</html>
