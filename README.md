@@ -1,4 +1,5 @@
 # To-Do-List
-HTML, CSS, JavaScript
+This web app is created using HTML, CSS, JavaScript
+
 
 visit the site https://guddukrp.github.io/To-Do-List/
